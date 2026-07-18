@@ -23,6 +23,10 @@ const categoryCount = (await getCategoryList()).length;
 	</div>
 
 	<nav class="home-overview-actions" aria-label="首页快捷入口">
+		<a class="home-action" href={url("/about/")}>
+			<Icon name="fa6-regular:address-card" />
+			<span>关于</span>
+		</a>
 		<a class="home-action" href={url("/archive/")}>
 			<Icon name="material-symbols:inventory-2-outline-rounded" />
 			<span>归档</span>
@@ -30,6 +34,10 @@ const categoryCount = (await getCategoryList()).length;
 		<a class="home-action" href={url("/rss.xml")} target="_blank">
 			<Icon name="fa6-solid:rss" />
 			<span>RSS</span>
+		</a>
+		<a class="home-action" href="https://github.com/Kemou2333" target="_blank" rel="me noreferrer">
+			<Icon name="fa6-brands:github" />
+			<span>GitHub</span>
 		</a>
 	</nav>
 </section>
@@ -132,11 +140,22 @@ const categoryCount = (await getCategoryList()).length;
 	@media (max-width: 640px) {
 		.home-overview {
 			min-height: 7rem;
+			flex-direction: column;
+			align-items: stretch;
+			gap: 1rem;
 			padding: 1rem 1.1rem;
 		}
 
-		.home-overview-actions { gap: 0.55rem; }
-		.home-action { width: 3.65rem; border-radius: 1rem; }
+		.home-overview-actions {
+			display: grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			gap: 0.55rem;
+		}
+		.home-action {
+			width: min(100%, 3.65rem);
+			justify-self: center;
+			border-radius: 1rem;
+		}
 		.home-action span { display: none; }
 	}
 </style>
