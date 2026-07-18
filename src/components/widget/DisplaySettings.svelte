@@ -31,13 +31,13 @@ $: if (hue || hue === 0) {
             </button>
         </div>
         <div class="flex gap-1">
-            <div id="hueValue" class="transition bg-[var(--btn-regular-bg)] w-10 h-7 rounded-md flex justify-center
+            <div id="hueValue" class="transition w-11 h-8 rounded-lg flex justify-center
             font-bold text-sm items-center text-[var(--btn-content)]">
                 {hue}
             </div>
         </div>
     </div>
-    <div class="w-full h-6 px-1 bg-[oklch(0.80_0.10_0)] dark:bg-[oklch(0.70_0.10_0)] rounded select-none">
+    <div class="hue-track-shell w-full h-8 px-2 rounded-xl select-none">
         <input aria-label={i18n(I18nKey.themeColor)} type="range" min="0" max="360" bind:value={hue}
                class="slider" id="colorSlider" step="5" style="width: 100%">
     </div>
@@ -45,49 +45,63 @@ $: if (hue || hue === 0) {
 
 
 <style lang="stylus">
+    #hueValue
+      border 1px solid var(--neu-border)
+      background var(--surface-low)
+      box-shadow inset 3px 3px 7px var(--neu-inset-shadow), inset -3px -3px 7px var(--neu-inset-highlight)
+
+    .hue-track-shell
+      display flex
+      align-items center
+      border 1px solid var(--neu-border)
+      background var(--surface-low)
+      box-shadow inset 4px 4px 8px var(--neu-inset-shadow), inset -4px -4px 8px var(--neu-inset-highlight)
+
     #display-setting
       input[type="range"]
         -webkit-appearance none
-        height 1.5rem
+        height .55rem
+        border-radius 999px
         background-image var(--color-selection-bar)
         transition background-image 0.15s ease-in-out
 
         /* Input Thumb */
         &::-webkit-slider-thumb
           -webkit-appearance none
-          height 1rem
-          width 0.5rem
-          border-radius 0.125rem
-          background rgba(255, 255, 255, 0.7)
-          box-shadow none
+          height 1.25rem
+          width 1.25rem
+          border-radius 50%
+          border 2px solid rgba(255, 255, 255, .82)
+          background var(--card-bg)
+          box-shadow 4px 4px 8px var(--neu-shadow), -3px -3px 7px var(--neu-highlight)
           &:hover
-            background rgba(255, 255, 255, 0.8)
+            transform scale(1.08)
           &:active
-            background rgba(255, 255, 255, 0.6)
+            box-shadow inset 2px 2px 4px var(--neu-inset-shadow), inset -2px -2px 4px var(--neu-inset-highlight)
 
         &::-moz-range-thumb
           -webkit-appearance none
-          height 1rem
-          width 0.5rem
-          border-radius 0.125rem
-          border-width 0
-          background rgba(255, 255, 255, 0.7)
-          box-shadow none
+          height 1.25rem
+          width 1.25rem
+          border-radius 50%
+          border 2px solid rgba(255, 255, 255, .82)
+          background var(--card-bg)
+          box-shadow 4px 4px 8px var(--neu-shadow), -3px -3px 7px var(--neu-highlight)
           &:hover
-            background rgba(255, 255, 255, 0.8)
+            transform scale(1.08)
           &:active
-            background rgba(255, 255, 255, 0.6)
+            box-shadow inset 2px 2px 4px var(--neu-inset-shadow), inset -2px -2px 4px var(--neu-inset-highlight)
 
         &::-ms-thumb
           -webkit-appearance none
-          height 1rem
-          width 0.5rem
-          border-radius 0.125rem
-          background rgba(255, 255, 255, 0.7)
-          box-shadow none
+          height 1.25rem
+          width 1.25rem
+          border-radius 50%
+          background var(--card-bg)
+          box-shadow 4px 4px 8px var(--neu-shadow), -3px -3px 7px var(--neu-highlight)
           &:hover
-            background rgba(255, 255, 255, 0.8)
+            transform scale(1.08)
           &:active
-            background rgba(255, 255, 255, 0.6)
+            box-shadow inset 2px 2px 4px var(--neu-inset-shadow), inset -2px -2px 4px var(--neu-inset-highlight)
 
 </style>

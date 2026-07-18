@@ -95,6 +95,22 @@
         }
     }
 
+    img {
+        @apply rounded-xl;
+        padding: 0.35rem;
+        border: 1px solid var(--neu-border);
+        background: var(--surface-low);
+        box-shadow:
+            inset 4px 4px 9px var(--neu-inset-shadow),
+            inset -4px -4px 9px var(--neu-inset-highlight),
+            8px 8px 18px var(--neu-shadow),
+            -6px -6px 14px var(--neu-highlight);
+    }
+
+    figcaption {
+        @apply text-center text-sm text-black/40 dark:text-white/40;
+    }
+
 
     ul, ol {
         li::marker {
@@ -105,6 +121,10 @@
     blockquote {
         @apply not-italic border-transparent relative;
         font-weight: inherit;
+        padding: 1rem 1.15rem;
+        border-radius: 1rem;
+        background: var(--surface-low);
+        box-shadow: inset 4px 4px 9px var(--neu-inset-shadow), inset -4px -4px 9px var(--neu-inset-highlight);
 
         &:before {
             @apply content-[''] absolute -left-1 block transition bg-[var(--btn-regular-bg)] h-full w-1 rounded-full;

@@ -2,6 +2,7 @@
 title: 进入大学前，我想先建立自己的学习系统
 published: 2026-07-15
 description: 与其先找一堆工具，不如先想清楚资料、任务和复盘分别放在哪里。
+image: /assets/images/study-system.webp
 tags: [大学, 学习, 项目]
 category: 学习与项目
 draft: false
