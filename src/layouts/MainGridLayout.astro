@@ -2,7 +2,9 @@
 import BackToTop from "@components/control/BackToTop.astro";
 import Footer from "@components/Footer.astro";
 import Navbar from "@components/Navbar.astro";
-import SideBar from "@components/widget/SideBar.astro";
+import Categories from "@components/widget/Categories.astro";
+import Profile from "@components/widget/Profile.astro";
+import Tags from "@components/widget/Tags.astro";
 import type { MarkdownHeading } from "astro";
 import { Icon } from "astro-icon/components";
 import ImageWrapper from "../components/misc/ImageWrapper.astro";
@@ -22,6 +24,7 @@ interface Props {
 	lang?: string;
 	setOGTypeArticle?: boolean;
 	headings?: MarkdownHeading[];
+	profileFirstOnMobile?: boolean;
 }
 
 const {
@@ -31,6 +34,7 @@ const {
 	lang,
 	setOGTypeArticle,
 	headings = [],
+	profileFirstOnMobile = false,
 } = Astro.props;
 const hasBannerCredit =
 	siteConfig.banner.enable && siteConfig.banner.credit.enable;
@@ -63,7 +67,7 @@ const mainPanelTop = siteConfig.banner.enable
 <div class="absolute w-full z-30 pointer-events-none" style={`top: ${mainPanelTop}`}>
     <!-- The pointer-events-none here prevent blocking the click event of the TOC -->
     <div class="relative max-w-[var(--page-width)] mx-auto pointer-events-auto">
-        <div id="main-grid" class="transition duration-700 w-full left-0 right-0 grid grid-cols-[17.5rem_auto] grid-rows-[auto_1fr_auto] lg:grid-rows-[auto]
+        <div id="main-grid" class="transition duration-700 w-full left-0 right-0 grid grid-cols-1 lg:grid-cols-[17.5rem_minmax(0,1fr)]
     mx-auto gap-4 px-0 md:px-4"
         >
             <!-- Banner image credit -->
@@ -80,9 +84,17 @@ const mainPanelTop = siteConfig.banner.enable
             </a>}
 
 
-            <SideBar class="mb-4 row-start-2 row-end-3 col-span-2 lg:row-start-1 lg:row-end-2 lg:col-span-1 lg:max-w-[17.5rem] onload-animation" headings={headings}></SideBar>
+            <div class:list={[
+                "col-span-1 lg:col-start-1 lg:row-start-1 lg:max-w-[17.5rem] onload-animation",
+                profileFirstOnMobile ? "order-1 lg:order-none" : "order-2 lg:order-none",
+            ]}>
+                <Profile></Profile>
+            </div>
 
-            <main id="swup-container" class="transition-swup-fade col-span-2 lg:col-span-1 overflow-hidden">
+            <main id="swup-container" class:list={[
+                "transition-swup-fade col-span-1 lg:col-start-2 lg:row-start-1 lg:row-span-3 min-w-0 overflow-visible",
+                profileFirstOnMobile ? "order-2 lg:order-none" : "order-1 lg:order-none",
+            ]}>
                 <div id="content-wrapper" class="onload-animation">
                     <!-- the overflow-hidden here prevent long text break the layout-->
                     <!-- make id different from windows.swup global property -->
@@ -93,7 +105,12 @@ const mainPanelTop = siteConfig.banner.enable
                 </div>
             </main>
 
-            <div class="footer col-span-2 onload-animation block lg:hidden">
+            <div id="sidebar-sticky" class="order-3 col-span-1 lg:col-start-1 lg:row-start-2 lg:max-w-[17.5rem] transition-all duration-700 flex flex-col w-full gap-4 lg:sticky lg:top-4">
+                <Categories class="onload-animation" style="animation-delay: 150ms"></Categories>
+                <Tags class="onload-animation" style="animation-delay: 200ms"></Tags>
+            </div>
+
+            <div class="footer order-4 col-span-1 lg:col-span-2 onload-animation block lg:hidden">
                 <Footer></Footer>
             </div>
         </div>

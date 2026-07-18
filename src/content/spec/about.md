@@ -1,9 +1,7 @@
-# About
-This is the demo site for [Fuwari](https://github.com/saicaca/fuwari).
+# 关于 Kemou
 
-::github{repo="saicaca/fuwari"}
+这里记录我对 AI、游戏、学习项目和日常生活的观察。
 
-> ### Sources of images used in this site
-> - [Unsplash](https://unsplash.com/)
-> - [星と少女](https://www.pixiv.net/artworks/108916539) by [Stella](https://www.pixiv.net/users/93273965)
-> - [Rabbit - v1.4 Showcase](https://civitai.com/posts/586908) by [Rabbit_YourMajesty](https://civitai.com/user/Rabbit_YourMajesty)
+我不是专业开发者。比起模型跑分和复杂工程，我更关心普通人怎样把 AI 用在学习、办公和电脑上的小任务里。
+
+游戏方面，目前主要在 PC 和 Nintendo Switch 上慢慢探索。这里不一定有完整评测，也会保留一些短小但值得记住的瞬间。
