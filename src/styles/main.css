@@ -6,9 +6,8 @@
         border: 1px solid var(--neu-border);
         background:
             linear-gradient(145deg,
-                color-mix(in srgb, var(--surface-high) 92%, transparent),
-                color-mix(in srgb, var(--card-bg) 94%, transparent));
-        backdrop-filter: blur(22px) saturate(1.16);
+                var(--surface-high),
+                var(--card-bg));
         box-shadow:
             15px 15px 32px var(--neu-shadow),
             -12px -12px 26px var(--neu-highlight),
@@ -196,20 +195,62 @@
         transform: translateY(-3px);
         box-shadow: 15px 15px 30px var(--neu-shadow-strong), -11px -11px 24px var(--neu-highlight-strong), inset 1px 1px 0 var(--neu-inset-highlight);
     }
+    .post-title-link {
+        width: fit-content;
+        max-width: calc(100% - 1rem);
+        margin-left: -.45rem;
+        padding: .22rem .48rem;
+        border: 1px solid transparent;
+        border-radius: .72rem;
+        transition: color 180ms ease, transform 180ms cubic-bezier(.22, 1, .36, 1), box-shadow 180ms ease, background-color 180ms ease;
+    }
+    .post-title-link:hover,
+    .post-title-link:focus-visible {
+        transform: translateY(-2px);
+        border-color: var(--neu-border);
+        background: linear-gradient(145deg, var(--surface-high), var(--card-bg));
+        box-shadow: 6px 6px 13px var(--neu-shadow), -5px -5px 11px var(--neu-highlight), inset 1px 1px 1px var(--neu-highlight-strong);
+    }
+    .post-title-link:active {
+        transform: translateY(1px);
+        background: var(--surface-low);
+        box-shadow: inset 4px 4px 8px var(--neu-inset-shadow), inset -4px -4px 8px var(--neu-inset-highlight);
+    }
     .neu-row {
-        border: 1px solid color-mix(in srgb, var(--neu-border) 58%, transparent);
-        background: color-mix(in srgb, var(--surface-low) 72%, transparent);
-        box-shadow: inset 2px 2px 5px color-mix(in srgb, var(--neu-inset-shadow) 65%, transparent), inset -2px -2px 5px color-mix(in srgb, var(--neu-inset-highlight) 65%, transparent);
-        transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, padding 180ms ease;
+        position: relative;
+        overflow: visible;
+        border: 1px solid var(--neu-border);
+        background: linear-gradient(145deg, var(--surface-high), var(--card-bg));
+        box-shadow: 4px 4px 9px var(--neu-shadow), -3px -3px 8px var(--neu-highlight), inset 1px 1px 1px var(--neu-highlight-strong);
+        transition: transform 180ms cubic-bezier(.22, 1, .36, 1), box-shadow 180ms ease, background-color 180ms ease, padding 180ms ease;
+    }
+    .neu-row::before {
+        content: "";
+        position: absolute;
+        left: -.2rem;
+        top: 50%;
+        width: .28rem;
+        height: 55%;
+        border-radius: 999px;
+        opacity: .32;
+        background: var(--primary);
+        transform: translateY(-50%) scaleY(.72);
+        box-shadow: 0 0 0 .18rem color-mix(in srgb, var(--primary) 10%, transparent);
+        transition: opacity 180ms ease, transform 180ms ease;
     }
     .neu-row:hover {
         border-color: var(--neu-border);
         background: linear-gradient(145deg, var(--surface-high), var(--card-bg));
-        box-shadow: 5px 5px 11px var(--neu-shadow), -4px -4px 9px var(--neu-highlight);
-        transform: translateY(-1px);
+        box-shadow: 8px 8px 17px var(--neu-shadow-strong), -7px -7px 15px var(--neu-highlight-strong), inset 1px 1px 1px var(--neu-highlight-strong);
+        transform: translate(-1px, -3px);
+    }
+    .neu-row:hover::before {
+        opacity: 1;
+        transform: translateY(-50%) scaleY(1);
     }
     .neu-row:active {
         transform: translateY(1px);
+        background: var(--surface-low);
         box-shadow: inset 3px 3px 6px var(--neu-inset-shadow), inset -3px -3px 6px var(--neu-inset-highlight);
     }
     .neu-enter-btn {
@@ -233,12 +274,35 @@
         box-shadow: inset 3px 3px 6px var(--neu-inset-shadow), inset -3px -3px 6px var(--neu-inset-highlight);
     }
     .neu-tag {
+        position: relative;
+        padding-left: 1.45rem;
         border: 1px solid var(--neu-border);
         background: linear-gradient(145deg, var(--surface-high), var(--card-bg));
-        box-shadow: 5px 5px 10px var(--neu-shadow), -4px -4px 8px var(--neu-highlight), inset 1px 1px 1px var(--neu-highlight-strong);
+        box-shadow: 5px 5px 11px var(--neu-shadow), -4px -4px 9px var(--neu-highlight), inset 1px 1px 1px var(--neu-highlight-strong);
+        transition: color 180ms ease, transform 180ms cubic-bezier(.22, 1, .36, 1), box-shadow 180ms ease;
+    }
+    .neu-tag::before {
+        content: "";
+        position: absolute;
+        left: .58rem;
+        width: .38rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: var(--primary);
+        box-shadow: 0 0 0 .18rem color-mix(in srgb, var(--primary) 12%, transparent), inset 1px 1px 1px rgba(255, 255, 255, .48);
+    }
+    .neu-tag:hover,
+    .neu-tag:focus-visible {
+        transform: translateY(-3px);
+        box-shadow: 8px 8px 16px var(--neu-shadow-strong), -6px -6px 13px var(--neu-highlight-strong), inset 1px 1px 1px var(--neu-highlight-strong);
+    }
+    .neu-tag:active {
+        transform: translateY(1px) !important;
+        background: var(--surface-low);
+        box-shadow: inset 4px 4px 8px var(--neu-inset-shadow), inset -4px -4px 8px var(--neu-inset-highlight);
     }
     .profile-frame {
-        border: .45rem solid color-mix(in srgb, var(--card-bg) 88%, transparent);
+        border: .45rem solid var(--card-bg);
         outline: 1px solid var(--neu-border);
         box-shadow: inset 6px 6px 12px var(--neu-inset-shadow), inset -6px -6px 12px var(--neu-inset-highlight), 7px 7px 15px var(--neu-shadow), -5px -5px 11px var(--neu-highlight);
     }
@@ -266,16 +330,41 @@
         background: var(--surface-low);
         box-shadow: inset 5px 5px 11px var(--neu-inset-shadow), inset -5px -5px 11px var(--neu-inset-highlight);
     }
-    .post-cover-frame,
-    #post-cover {
-        border: .42rem solid color-mix(in srgb, var(--card-bg) 92%, transparent);
+    .post-cover-frame {
+        padding: .28rem;
+        border: .32rem solid var(--card-bg);
         outline: 1px solid var(--neu-border);
         background: var(--surface-low);
         box-shadow:
-            inset 5px 5px 11px var(--neu-inset-shadow),
-            inset -5px -5px 11px var(--neu-inset-highlight),
-            7px 7px 16px var(--neu-shadow),
-            -5px -5px 12px var(--neu-highlight);
+            inset 5px 5px 10px var(--neu-inset-shadow),
+            inset -5px -5px 10px var(--neu-inset-highlight),
+            5px 5px 11px var(--neu-shadow),
+            -4px -4px 9px var(--neu-highlight);
+    }
+    #post-cover {
+        padding: .68rem;
+        border: .34rem solid var(--card-bg);
+        outline: 1px solid var(--neu-border);
+        background: var(--surface-low);
+        box-shadow:
+            inset 11px 11px 22px var(--neu-inset-shadow),
+            inset -11px -11px 22px var(--neu-inset-highlight),
+            6px 6px 14px var(--neu-shadow),
+            -5px -5px 12px var(--neu-highlight),
+            inset 0 0 0 1px color-mix(in srgb, var(--neu-shadow) 38%, transparent);
+    }
+    #post-cover::after {
+        content: "";
+        position: absolute;
+        z-index: 2;
+        inset: .68rem;
+        border: 1px solid color-mix(in srgb, white 48%, transparent);
+        border-radius: calc(var(--radius-large) - .55rem);
+        box-shadow: inset 4px 4px 9px rgba(16, 29, 48, .22), inset -2px -2px 7px rgba(255, 255, 255, .18);
+        pointer-events: none;
+    }
+    #post-cover img {
+        border-radius: calc(var(--radius-large) - .58rem);
     }
     .post-nav-grid {
         display: grid;
@@ -291,11 +380,23 @@
         color: inherit;
     }
     .post-nav-control {
+        position: relative;
         min-height: 5.35rem;
         padding: .75rem .95rem;
         gap: .9rem;
         justify-content: flex-start;
         border-radius: var(--radius-large);
+        box-shadow: 9px 9px 20px var(--neu-shadow), -7px -7px 16px var(--neu-highlight), inset 1px 1px 1px var(--neu-highlight-strong);
+    }
+    .post-nav-link:hover .post-nav-control,
+    .post-nav-link:focus-visible .post-nav-control {
+        transform: translateY(-4px) scale(1.01);
+        box-shadow: 13px 13px 27px var(--neu-shadow-strong), -10px -10px 21px var(--neu-highlight-strong), inset 1px 1px 1px var(--neu-highlight-strong);
+    }
+    .post-nav-link:active .post-nav-control {
+        transform: translateY(1px) scale(.995);
+        background: var(--surface-low);
+        box-shadow: inset 6px 6px 12px var(--neu-inset-shadow), inset -6px -6px 12px var(--neu-inset-highlight);
     }
     .post-nav-control.is-next {
         justify-content: flex-end;
@@ -332,6 +433,11 @@
         color: var(--primary);
         box-shadow: 5px 5px 10px var(--neu-shadow), -4px -4px 9px var(--neu-highlight), inset 1px 1px 1px var(--neu-highlight-strong);
     }
+    .post-nav-link:hover .post-nav-knob {
+        color: white;
+        background: var(--primary);
+        box-shadow: 5px 5px 11px color-mix(in srgb, var(--primary) 35%, var(--neu-shadow)), -4px -4px 9px var(--neu-highlight), inset 1px 1px 1px rgba(255, 255, 255, .52);
+    }
     .article-fact-icon {
         display: grid;
         place-items: center;
@@ -355,8 +461,28 @@
         background: linear-gradient(to bottom, transparent 58%, color-mix(in srgb, var(--page-bg) 22%, transparent));
         box-shadow: inset 0 -1px 0 var(--neu-highlight);
     }
+    #scheme-switch,
+    #display-settings-switch,
+    #search-switch,
+    #nav-menu-switch {
+        border-color: var(--neu-border);
+        background: linear-gradient(145deg, var(--surface-high), var(--card-bg));
+        box-shadow: 5px 5px 11px var(--neu-shadow), -4px -4px 9px var(--neu-highlight), inset 1px 1px 1px var(--neu-highlight-strong);
+    }
+    .site-footer-plate {
+        padding: 1.1rem 1.25rem;
+        border: 1px solid var(--neu-border);
+        background: linear-gradient(145deg, var(--surface-high), var(--card-bg));
+        box-shadow: 8px 8px 17px var(--neu-shadow), -6px -6px 14px var(--neu-highlight), inset 1px 1px 1px var(--neu-highlight-strong);
+    }
+    .site-footer-divider {
+        height: .55rem;
+        border-radius: 999px;
+        background: var(--surface-low);
+        box-shadow: inset 3px 3px 7px var(--neu-inset-shadow), inset -3px -3px 7px var(--neu-inset-highlight);
+    }
     :root.dark .card-base {
-        background: linear-gradient(145deg, color-mix(in srgb, var(--surface-high) 94%, transparent), color-mix(in srgb, var(--card-bg) 96%, transparent));
+        background: linear-gradient(145deg, var(--surface-high), var(--card-bg));
         box-shadow:
             16px 16px 34px var(--neu-shadow-strong),
             -8px -8px 17px var(--neu-highlight),
@@ -373,8 +499,9 @@ html {
         radial-gradient(circle at 88% 13%, color-mix(in srgb, var(--primary) 12%, transparent) 0, transparent 31rem),
         radial-gradient(circle at 82% 74%, color-mix(in srgb, var(--accent-coral) 7%, transparent) 0, transparent 36rem),
         radial-gradient(circle at 18% 82%, color-mix(in srgb, var(--accent-mint) 8%, transparent) 0, transparent 34rem),
+        repeating-linear-gradient(135deg, rgba(255, 255, 255, .025) 0 1px, transparent 1px 7px),
         linear-gradient(135deg, color-mix(in srgb, var(--surface-high) 45%, transparent), transparent 48%, color-mix(in srgb, var(--primary) 4%, transparent));
-    background-blend-mode: screen, normal, normal, normal, normal;
+    background-blend-mode: screen, normal, normal, normal, soft-light, normal;
     background-attachment: fixed;
     background-size: cover;
 }
@@ -390,8 +517,9 @@ body {
         radial-gradient(circle at 88% 13%, color-mix(in srgb, var(--primary) 8%, transparent) 0, transparent 34rem),
         radial-gradient(circle at 82% 74%, color-mix(in srgb, var(--accent-coral) 4%, transparent) 0, transparent 38rem),
         radial-gradient(circle at 18% 82%, color-mix(in srgb, var(--accent-mint) 4%, transparent) 0, transparent 36rem),
+        repeating-linear-gradient(135deg, rgba(255, 255, 255, .012) 0 1px, transparent 1px 7px),
         linear-gradient(135deg, rgba(255, 255, 255, .018), transparent 46%, rgba(0, 0, 0, .11));
-    background-blend-mode: screen, screen, screen, screen, normal;
+    background-blend-mode: screen, screen, screen, screen, soft-light, normal;
 }
 
 @media (max-width: 767px) {
