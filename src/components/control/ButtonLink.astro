@@ -3,10 +3,11 @@ interface Props {
 	badge?: string;
 	url?: string;
 	label?: string;
+	style?: string;
 }
-const { badge, url, label } = Astro.props;
+const { badge, url, label, style } = Astro.props;
 ---
-<a href={url} aria-label={label}>
+<a href={url} aria-label={label} style={style}>
     <button
         class:list={`neu-row
             w-full

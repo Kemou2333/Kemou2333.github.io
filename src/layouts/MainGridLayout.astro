@@ -64,7 +64,7 @@ const mainPanelTop = siteConfig.banner.enable
 </div>}
 
 <!-- Main content -->
-<div class="absolute w-full z-30 pointer-events-none" style={`top: ${mainPanelTop}`}>
+<div class="absolute w-full z-30 pointer-events-none page-shell" style={`top: ${mainPanelTop}; --main-panel-top: ${mainPanelTop}`}>
     <!-- The pointer-events-none here prevent blocking the click event of the TOC -->
     <div class="relative max-w-[var(--page-width)] mx-auto pointer-events-auto">
         <div id="main-grid" class="transition duration-700 w-full left-0 right-0 grid grid-cols-1 lg:grid-cols-[17.5rem_minmax(0,1fr)]
@@ -95,11 +95,11 @@ const mainPanelTop = siteConfig.banner.enable
                 "transition-swup-fade col-span-1 lg:col-start-2 lg:row-start-1 lg:row-span-3 min-w-0 overflow-visible",
                 profileFirstOnMobile ? "order-2 lg:order-none" : "order-1 lg:order-none",
             ]}>
-                <div id="content-wrapper" class="onload-animation">
+                <div id="content-wrapper" class="onload-animation content-column">
                     <!-- the overflow-hidden here prevent long text break the layout-->
                     <!-- make id different from windows.swup global property -->
                     <slot></slot>
-                    <div class="footer col-span-2 onload-animation hidden lg:block">
+                    <div class="footer onload-animation">
                         <Footer></Footer>
                     </div>
                 </div>
@@ -109,15 +109,23 @@ const mainPanelTop = siteConfig.banner.enable
                 <Categories class="onload-animation" style="animation-delay: 150ms"></Categories>
                 <Tags class="onload-animation" style="animation-delay: 200ms"></Tags>
             </div>
-
-            <div class="footer order-4 col-span-1 lg:col-span-2 onload-animation block lg:hidden">
-                <Footer></Footer>
-            </div>
         </div>
 
         <BackToTop></BackToTop>
     </div>
 </div>
+
+<style>
+/* 页脚: 内容不足一屏时推到整页最底部,内容长时自然跟在内容后 */
+.content-column {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - var(--main-panel-top, 6rem) - 1rem);
+}
+.content-column > .footer {
+    margin-top: auto;
+}
+</style>
 
 <!-- The things that should be under the banner, only the TOC for now -->
 <div class="absolute w-full z-0 hidden 2xl:block">

@@ -10,7 +10,6 @@
                 var(--card-bg));
         box-shadow:
             15px 15px 32px var(--neu-shadow),
-            -12px -12px 26px var(--neu-highlight),
             inset 1px 1px 1px var(--neu-highlight-strong),
             inset -1px -1px 1px color-mix(in srgb, var(--neu-shadow) 58%, transparent);
         transition-duration: 220ms;
@@ -189,7 +188,7 @@
         height: 2.15rem;
         border-radius: 999px;
         background: var(--card-accent, var(--primary));
-        box-shadow: 0 0 0 .22rem color-mix(in srgb, var(--card-accent, var(--primary)) 12%, transparent), 2px 3px 8px color-mix(in srgb, var(--card-accent, var(--primary)) 30%, transparent);
+        box-shadow: inset 1px 1px 1px rgba(255, 255, 255, .42), 1px 2px 3px color-mix(in srgb, var(--card-accent, var(--primary)) 26%, transparent);
     }
     .post-card:hover {
         transform: translateY(-3px);
@@ -220,8 +219,8 @@
         position: relative;
         overflow: visible;
         border: 1px solid var(--neu-border);
-        background: linear-gradient(145deg, var(--surface-high), var(--card-bg));
-        box-shadow: 4px 4px 9px var(--neu-shadow), -3px -3px 8px var(--neu-highlight), inset 1px 1px 1px var(--neu-highlight-strong);
+        background: linear-gradient(150deg, var(--surface-high), color-mix(in srgb, var(--surface-high) 45%, var(--card-bg)));
+        box-shadow: 5px 5px 11px color-mix(in srgb, var(--neu-shadow-strong) 74%, transparent), -4px -4px 10px var(--neu-highlight-strong), inset 1px 1px 1px var(--neu-highlight-strong);
         transition: transform 180ms cubic-bezier(.22, 1, .36, 1), box-shadow 180ms ease, background-color 180ms ease, padding 180ms ease;
     }
     .neu-row::before {
@@ -232,10 +231,10 @@
         width: .28rem;
         height: 55%;
         border-radius: 999px;
-        opacity: .32;
-        background: var(--primary);
+        opacity: .38;
+        background: var(--row-accent, var(--primary));
         transform: translateY(-50%) scaleY(.72);
-        box-shadow: 0 0 0 .18rem color-mix(in srgb, var(--primary) 10%, transparent);
+        box-shadow: inset 1px 1px 1px rgba(255, 255, 255, .38);
         transition: opacity 180ms ease, transform 180ms ease;
     }
     .neu-row:hover {
@@ -277,9 +276,9 @@
         position: relative;
         padding-left: 1.45rem;
         border: 1px solid var(--neu-border);
-        background: linear-gradient(145deg, var(--surface-high), var(--card-bg));
-        box-shadow: 5px 5px 11px var(--neu-shadow), -4px -4px 9px var(--neu-highlight), inset 1px 1px 1px var(--neu-highlight-strong);
-        transition: color 180ms ease, transform 180ms cubic-bezier(.22, 1, .36, 1), box-shadow 180ms ease;
+        background: linear-gradient(150deg, var(--surface-high), color-mix(in srgb, var(--surface-high) 45%, var(--card-bg)));
+        box-shadow: 5px 5px 10px color-mix(in srgb, var(--neu-shadow-strong) 70%, transparent), -4px -4px 9px var(--neu-highlight-strong), inset 1px 1px 1px var(--neu-highlight-strong);
+        transition: color 180ms ease, transform 180ms cubic-bezier(.22, 1, .36, 1), box-shadow 180ms ease, outline-color 180ms ease;
     }
     .neu-tag::before {
         content: "";
@@ -289,17 +288,108 @@
         aspect-ratio: 1;
         border-radius: 50%;
         background: var(--primary);
-        box-shadow: 0 0 0 .18rem color-mix(in srgb, var(--primary) 12%, transparent), inset 1px 1px 1px rgba(255, 255, 255, .48);
+        box-shadow: inset 1px 1px 1px rgba(255, 255, 255, .48);
     }
-    .neu-tag:hover,
+    .neu-tag:focus {
+        outline: none;
+    }
     .neu-tag:focus-visible {
+        outline: 2px solid color-mix(in srgb, var(--primary) 55%, transparent);
+        outline-offset: 2px;
+    }
+    .neu-tag:hover {
         transform: translateY(-3px);
         box-shadow: 8px 8px 16px var(--neu-shadow-strong), -6px -6px 13px var(--neu-highlight-strong), inset 1px 1px 1px var(--neu-highlight-strong);
     }
     .neu-tag:active {
         transform: translateY(1px) !important;
-        background: var(--surface-low);
-        box-shadow: inset 4px 4px 8px var(--neu-inset-shadow), inset -4px -4px 8px var(--neu-inset-highlight);
+        background: color-mix(in srgb, var(--surface-low) 82%, var(--card-bg));
+        box-shadow: inset 2px 2px 5px var(--neu-inset-shadow), inset -2px -2px 5px var(--neu-inset-highlight);
+    }
+    .post-facts {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        width: fit-content;
+        padding: 0.28rem 0.65rem;
+        border: 1px solid color-mix(in srgb, var(--neu-border) 46%, transparent);
+        border-radius: 0.7rem;
+        font-size: 0.75rem;
+        color: color-mix(in srgb, var(--surface-text) 42%, transparent);
+        background: color-mix(in srgb, var(--surface-low) 52%, var(--card-bg));
+        box-shadow: inset 2px 2px 4px color-mix(in srgb, var(--neu-inset-shadow) 58%, transparent), inset -2px -2px 4px color-mix(in srgb, var(--neu-inset-highlight) 72%, transparent);
+    }
+    .post-facts i {
+        width: 0.24rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: color-mix(in srgb, var(--card-accent, var(--primary)) 62%, var(--card-bg));
+    }
+    .post-desc {
+        border-left: 2px solid color-mix(in srgb, var(--card-accent, var(--primary)) 36%, transparent);
+        padding-left: 0.75rem;
+    }
+    .neu-mini-tag {
+        display: inline-flex;
+        align-items: center;
+        height: 1.55rem;
+        padding: 0 0.55rem;
+        margin-right: 0.35rem;
+        border: 1px solid var(--neu-border);
+        border-radius: 0.55rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: color-mix(in srgb, var(--surface-text) 68%, transparent);
+        background: linear-gradient(150deg, var(--surface-high), color-mix(in srgb, var(--surface-high) 45%, var(--card-bg)));
+        box-shadow: 3px 3px 7px color-mix(in srgb, var(--neu-shadow-strong) 62%, transparent), -2px -2px 5px var(--neu-highlight-strong), inset 1px 1px 1px var(--neu-highlight-strong);
+        transition: color 180ms ease, transform 180ms cubic-bezier(.22, 1, .36, 1), box-shadow 180ms ease;
+    }
+    .neu-mini-tag:focus {
+        outline: none;
+    }
+    .neu-mini-tag:focus-visible {
+        outline: 2px solid color-mix(in srgb, var(--primary) 55%, transparent);
+        outline-offset: 2px;
+    }
+    .neu-mini-tag:hover {
+        color: var(--primary);
+        transform: translateY(-2px);
+        box-shadow: 5px 5px 10px var(--neu-shadow-strong), -3px -3px 8px var(--neu-highlight-strong), inset 1px 1px 1px var(--neu-highlight-strong);
+    }
+    .neu-mini-tag:active {
+        transform: translateY(1px);
+        background: color-mix(in srgb, var(--surface-low) 82%, var(--card-bg));
+        box-shadow: inset 2px 2px 4px var(--neu-inset-shadow), inset -2px -2px 4px var(--neu-inset-highlight);
+    }
+    .neu-inline-link {
+        display: inline-block;
+        width: fit-content;
+        max-width: 100%;
+        padding: 0.14rem 0.5rem;
+        margin-left: -0.5rem;
+        border: 1px solid transparent;
+        border-radius: 0.6rem;
+        color: var(--primary);
+        font-weight: 500;
+        transition: transform 180ms cubic-bezier(.22, 1, .36, 1), box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease;
+    }
+    .neu-inline-link:focus {
+        outline: none;
+    }
+    .neu-inline-link:focus-visible {
+        outline: 2px solid color-mix(in srgb, var(--primary) 55%, transparent);
+        outline-offset: 2px;
+    }
+    .neu-inline-link:hover {
+        transform: translateY(-1px);
+        border-color: var(--neu-border);
+        background: linear-gradient(145deg, var(--surface-high), var(--card-bg));
+        box-shadow: 4px 4px 9px var(--neu-shadow), -3px -3px 8px var(--neu-highlight), inset 1px 1px 1px var(--neu-highlight-strong);
+    }
+    .neu-inline-link:active {
+        transform: translateY(1px);
+        background: color-mix(in srgb, var(--surface-low) 82%, var(--card-bg));
+        box-shadow: inset 2px 2px 5px var(--neu-inset-shadow), inset -2px -2px 5px var(--neu-inset-highlight);
     }
     .profile-frame {
         border: .45rem solid var(--card-bg);
@@ -317,12 +407,20 @@
         background: var(--surface-low);
         box-shadow: inset 4px 4px 8px var(--neu-inset-shadow), inset -4px -4px 8px var(--neu-inset-highlight);
     }
+    #categories {
+        display: flex;
+        flex-direction: column;
+        gap: 0.55rem;
+    }
+    #categories > a {
+        display: block;
+    }
     .pagination-current {
         position: relative;
         isolation: isolate;
         box-shadow:
-            5px 5px 11px color-mix(in srgb, var(--primary) 34%, var(--neu-shadow)),
-            -4px -4px 9px var(--neu-highlight),
+            4px 4px 9px color-mix(in srgb, var(--primary) 22%, var(--neu-shadow)),
+            -3px -3px 8px var(--neu-highlight),
             inset 1px 1px 1px rgba(255, 255, 255, .45);
     }
     .license-panel {
@@ -458,8 +556,7 @@
         position: absolute;
         inset: 0;
         pointer-events: none;
-        background: linear-gradient(to bottom, transparent 58%, color-mix(in srgb, var(--page-bg) 22%, transparent));
-        box-shadow: inset 0 -1px 0 var(--neu-highlight);
+        background: transparent;
     }
     #scheme-switch,
     #display-settings-switch,
@@ -485,7 +582,6 @@
         background: linear-gradient(145deg, var(--surface-high), var(--card-bg));
         box-shadow:
             16px 16px 34px var(--neu-shadow-strong),
-            -8px -8px 17px var(--neu-highlight),
             inset 1px 1px 0 var(--neu-inset-highlight),
             inset -1px -1px 0 rgba(0, 0, 0, 0.32);
     }
@@ -495,12 +591,12 @@ html {
     min-height: 100%;
     background-color: var(--page-bg);
     background-image:
-        radial-gradient(circle at 8% 8%, color-mix(in srgb, var(--accent-cyan) 12%, transparent) 0, transparent 30rem),
-        radial-gradient(circle at 88% 13%, color-mix(in srgb, var(--primary) 12%, transparent) 0, transparent 31rem),
-        radial-gradient(circle at 82% 74%, color-mix(in srgb, var(--accent-coral) 7%, transparent) 0, transparent 36rem),
-        radial-gradient(circle at 18% 82%, color-mix(in srgb, var(--accent-mint) 8%, transparent) 0, transparent 34rem),
-        repeating-linear-gradient(135deg, rgba(255, 255, 255, .025) 0 1px, transparent 1px 7px),
-        linear-gradient(135deg, color-mix(in srgb, var(--surface-high) 45%, transparent), transparent 48%, color-mix(in srgb, var(--primary) 4%, transparent));
+        radial-gradient(circle at 8% 8%, color-mix(in srgb, var(--accent-cyan) 5%, transparent) 0, transparent 30rem),
+        radial-gradient(circle at 88% 13%, color-mix(in srgb, var(--primary) 5%, transparent) 0, transparent 31rem),
+        radial-gradient(circle at 82% 74%, color-mix(in srgb, var(--accent-coral) 3%, transparent) 0, transparent 36rem),
+        radial-gradient(circle at 18% 82%, color-mix(in srgb, var(--accent-mint) 3.5%, transparent) 0, transparent 34rem),
+        repeating-linear-gradient(135deg, rgba(255, 255, 255, .014) 0 1px, transparent 1px 7px),
+        linear-gradient(135deg, color-mix(in srgb, var(--surface-high) 30%, transparent), transparent 48%, color-mix(in srgb, var(--primary) 2%, transparent));
     background-blend-mode: screen, normal, normal, normal, soft-light, normal;
     background-attachment: fixed;
     background-size: cover;
@@ -513,17 +609,17 @@ body {
 
 :root.dark {
     background-image:
-        radial-gradient(circle at 8% 8%, color-mix(in srgb, var(--accent-cyan) 7%, transparent) 0, transparent 32rem),
-        radial-gradient(circle at 88% 13%, color-mix(in srgb, var(--primary) 8%, transparent) 0, transparent 34rem),
-        radial-gradient(circle at 82% 74%, color-mix(in srgb, var(--accent-coral) 4%, transparent) 0, transparent 38rem),
-        radial-gradient(circle at 18% 82%, color-mix(in srgb, var(--accent-mint) 4%, transparent) 0, transparent 36rem),
-        repeating-linear-gradient(135deg, rgba(255, 255, 255, .012) 0 1px, transparent 1px 7px),
-        linear-gradient(135deg, rgba(255, 255, 255, .018), transparent 46%, rgba(0, 0, 0, .11));
+        radial-gradient(circle at 8% 8%, color-mix(in srgb, var(--accent-cyan) 3.5%, transparent) 0, transparent 32rem),
+        radial-gradient(circle at 88% 13%, color-mix(in srgb, var(--primary) 4%, transparent) 0, transparent 34rem),
+        radial-gradient(circle at 82% 74%, color-mix(in srgb, var(--accent-coral) 2%, transparent) 0, transparent 38rem),
+        radial-gradient(circle at 18% 82%, color-mix(in srgb, var(--accent-mint) 2%, transparent) 0, transparent 36rem),
+        repeating-linear-gradient(135deg, rgba(255, 255, 255, .008) 0 1px, transparent 1px 7px),
+        linear-gradient(135deg, rgba(255, 255, 255, .012), transparent 46%, rgba(0, 0, 0, .08));
     background-blend-mode: screen, screen, screen, screen, soft-light, normal;
 }
 
-@media (max-width: 767px) {
-    @layer components {
+@layer components {
+    @media (max-width: 767px) {
         .post-nav-grid {
             grid-template-columns: minmax(0, 1fr);
         }

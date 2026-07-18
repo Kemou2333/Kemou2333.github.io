@@ -40,23 +40,35 @@ export const siteConfig: SiteConfig = {
 };
 
 export const navBarConfig: NavBarConfig = {
-	links: [
-		LinkPreset.Home,
-		LinkPreset.Archive,
-		LinkPreset.About,
-		{
-			name: "GitHub",
-			url: "https://github.com/Kemou2333",
-			external: true,
-		},
-	],
+	links: [LinkPreset.Home, LinkPreset.Archive, LinkPreset.About],
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/demo-avatar.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
+	avatar: "/assets/images/kemou-avatar.jpg", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
 	name: "Kemou",
 	bio: "普通用户的 AI、游戏与生活记录",
-	links: [],
+	links: [
+		{
+			name: "Bilibili",
+			url: "https://space.bilibili.com/441946215",
+			icon: "fa6-brands:bilibili",
+		},
+		{
+			name: "GitHub",
+			url: "https://github.com/Kemou2333",
+			icon: "fa6-brands:github",
+		},
+		{
+			name: "Telegram",
+			url: "https://t.me/Kemou2333",
+			icon: "fa6-brands:telegram",
+		},
+		{
+			name: "Email",
+			url: "mailto:kemou233@gmail.com",
+			icon: "fa6-solid:envelope",
+		},
+	],
 };
 
 export const licenseConfig: LicenseConfig = {

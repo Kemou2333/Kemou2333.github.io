@@ -3,6 +3,7 @@ import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import Icon from "@iconify/svelte";
 import { getDefaultHue, getHue, setHue } from "@utils/setting-utils";
+import { onMount } from "svelte";
 
 let hue = getHue();
 const defaultHue = getDefaultHue();
@@ -14,6 +15,15 @@ function resetHue() {
 $: if (hue || hue === 0) {
 	setHue(hue);
 }
+
+onMount(() => {
+	// 导航栏调色按钮单击循环色相时,同步滑杆与数值显示
+	const syncHue = (e: Event) => {
+		hue = (e as CustomEvent<number>).detail;
+	};
+	window.addEventListener("hue-cycle", syncHue);
+	return () => window.removeEventListener("hue-cycle", syncHue);
+});
 </script>
 
 <div id="display-setting" class="float-panel float-panel-closed absolute transition-all w-80 right-4 px-4 py-4">

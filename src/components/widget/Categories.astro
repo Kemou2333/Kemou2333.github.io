@@ -12,6 +12,19 @@ const COLLAPSE_THRESHOLD = 5;
 
 const isCollapsed = categories.length >= COLLAPSE_THRESHOLD;
 
+// 与文章卡同一套配色逻辑: 按名称散列取强调色,新增分类自动获得颜色
+const accentPalette = [
+	"var(--primary)",
+	"var(--accent-cyan)",
+	"var(--accent-coral)",
+	"var(--accent-mint)",
+];
+const accentFor = (name: string) =>
+	accentPalette[
+		[...name].reduce((total, ch) => total + (ch.codePointAt(0) || 0), 0) %
+			accentPalette.length
+	];
+
 interface Props {
 	class?: string;
 	style?: string;
@@ -28,6 +41,7 @@ const style = Astro.props.style;
             url={c.url}
             badge={String(c.count)}
             label={`View all posts in the ${c.name.trim()} category`}
+            style={`--row-accent: ${accentFor(c.name.trim())}`}
         >
             {c.name.trim()}
         </ButtonLink>

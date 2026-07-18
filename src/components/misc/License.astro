@@ -22,9 +22,10 @@ const postUrl = decodeURIComponent(Astro.url.toString());
     <div class="transition font-bold text-black/75 dark:text-white/75">
         {title}
     </div>
-    <a href={postUrl} class="link text-[var(--primary)]">
-        {postUrl}
-    </a>
+    <button type="button" class="neu-inline-link license-copy" data-license-copy={postUrl} title="点击复制链接" aria-label="复制文章链接">
+        <Icon name="material-symbols:link-rounded" class="license-copy-icon" />
+        <span data-copy-label>{postUrl}</span>
+    </button>
     <div class="flex gap-6 mt-2">
         <div>
             <div class="transition text-black/30 dark:text-white/30 text-sm">{i18n(I18nKey.author)}</div>
@@ -36,8 +37,61 @@ const postUrl = decodeURIComponent(Astro.url.toString());
         </div>
         <div>
             <div class="transition text-black/30 dark:text-white/30 text-sm">{i18n(I18nKey.license)}</div>
-            <a href={licenseConf.url} target="_blank" class="link text-[var(--primary)] line-clamp-2">{licenseConf.name}</a>
+            <a href={licenseConf.url} target="_blank" class="neu-inline-link line-clamp-2">{licenseConf.name}</a>
         </div>
     </div>
     <Icon name="fa6-brands:creative-commons" class="transition text-[15rem] absolute pointer-events-none right-6 top-1/2 -translate-y-1/2 text-black/5 dark:text-white/5"></Icon>
 </div>
+
+<style>
+    .license-copy {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        cursor: copy;
+        word-break: break-all;
+        text-align: left;
+    }
+    .license-copy-icon {
+        flex: 0 0 auto;
+        font-size: 1rem;
+        opacity: 0.75;
+    }
+    .license-copy.copied {
+        color: var(--accent-mint);
+    }
+</style>
+
+<script>
+    // 事件委托绑定一次即可,Swup 换页后仍然有效
+    if (!(window as any).__licenseCopyBound) {
+        (window as any).__licenseCopyBound = true;
+        document.addEventListener("click", async (e) => {
+            const btn = (e.target as HTMLElement).closest("[data-license-copy]") as HTMLElement | null;
+            if (!btn) return;
+            e.preventDefault();
+            const url = btn.getAttribute("data-license-copy");
+            if (!url) return;
+            try {
+                await navigator.clipboard.writeText(url);
+            } catch {
+                // 剪贴板 API 不可用时退化为选中文本
+                const range = document.createRange();
+                range.selectNodeContents(btn);
+                const sel = window.getSelection();
+                sel?.removeAllRanges();
+                sel?.addRange(range);
+            }
+            const label = btn.querySelector("[data-copy-label]");
+            if (label) {
+                const old = label.textContent;
+                label.textContent = "已复制到剪贴板 ✓";
+                btn.classList.add("copied");
+                setTimeout(() => {
+                    label.textContent = old;
+                    btn.classList.remove("copied");
+                }, 1600);
+            }
+        });
+    }
+</script>

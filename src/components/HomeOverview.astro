@@ -54,20 +54,6 @@ const categoryCount = (await getCategoryList()).length;
 		isolation: isolate;
 	}
 
-	.home-overview::after {
-		content: "";
-		position: absolute;
-		z-index: -1;
-		left: 2.5rem;
-		bottom: 1.2rem;
-		width: 8rem;
-		height: 4rem;
-		border-radius: 50%;
-		background: color-mix(in srgb, var(--accent-cyan) 12%, transparent);
-		filter: blur(1.75rem);
-		pointer-events: none;
-	}
-
 	.home-overview-copy p {
 		margin: 0 0 0.25rem;
 		font-size: 0.65rem;
@@ -109,7 +95,7 @@ const categoryCount = (await getCategoryList()).length;
 		aspect-ratio: 1;
 		border-radius: 50%;
 		background: var(--accent-mint);
-		box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--accent-mint) 13%, transparent);
+		box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.45);
 	}
 
 	.home-overview-actions {

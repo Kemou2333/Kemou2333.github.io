@@ -43,7 +43,7 @@ let links: NavBarLink[] = navBarConfig.links.map(
                 </a>;
             })}
         </div>
-        <div class="flex">
+        <div class="flex items-center gap-1.5 md:gap-2">
             <!--<SearchPanel client:load>-->
             <Search client:only="svelte"></Search>
             {!siteConfig.themeColor.fixed && (
@@ -82,12 +82,30 @@ function loadButtonScript() {
 
     let settingBtn = document.getElementById("display-settings-switch");
     if (settingBtn) {
+        // 单击调色按钮: 在预设色相中循环切换
+        const presetHues = [35, 78, 165, 220, 250, 305];
         settingBtn.onclick = function () {
-            let settingPanel = document.getElementById("display-setting");
-            if (settingPanel) {
-                settingPanel.classList.toggle("float-panel-closed");
-            }
+            const fallback = document.getElementById("config-carrier")?.dataset.hue || "305";
+            const current = parseInt(localStorage.hue || fallback, 10);
+            const next = presetHues.find((h) => h > current) ?? presetHues[0];
+            localStorage.hue = String(next);
+            document.documentElement.style.setProperty("--hue", String(next));
+            window.dispatchEvent(new CustomEvent("hue-cycle", { detail: next }));
         };
+        // 桌面端悬停: 展开滑杆面板做精细调整
+        if (window.matchMedia("(hover: hover)").matches) {
+            let settingPanel = document.getElementById("display-setting");
+            settingBtn.onmouseenter = function () {
+                if (settingPanel) {
+                    settingPanel.classList.remove("float-panel-closed");
+                }
+            };
+            if (settingPanel) {
+                settingPanel.onmouseleave = function () {
+                    settingPanel.classList.add("float-panel-closed");
+                };
+            }
+        }
     }
 
     let menuBtn = document.getElementById("nav-menu-switch");
