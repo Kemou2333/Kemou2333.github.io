@@ -121,18 +121,27 @@
     blockquote {
         @apply not-italic border-transparent relative;
         font-weight: inherit;
-        padding: 1rem 1.15rem;
-        border-radius: 1rem;
+        margin: 1.1rem 0;
+        padding: 0.65rem 0.85rem 0.65rem 1rem;
+        border-radius: 0.8rem;
         background: var(--surface-low);
-        box-shadow: inset 4px 4px 9px var(--neu-inset-shadow), inset -4px -4px 9px var(--neu-inset-highlight);
+        box-shadow:
+            inset 2px 2px 5px color-mix(in srgb, var(--neu-inset-shadow) 74%, transparent),
+            inset -2px -2px 5px color-mix(in srgb, var(--neu-inset-highlight) 82%, transparent);
 
         &:before {
-            @apply content-[''] absolute -left-1 block transition bg-[var(--btn-regular-bg)] h-full w-1 rounded-full;
+            @apply content-[''] absolute left-0 block transition bg-[var(--btn-regular-bg)] w-1 rounded-full;
+            top: 0.55rem;
+            bottom: 0.55rem;
         }
 
         /* Remove the double quotes from default styles */
         p:before, p:after {
             @apply content-none;
+        }
+
+        p {
+            margin: 0;
         }
 
     }

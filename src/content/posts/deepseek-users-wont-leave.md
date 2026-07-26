@@ -2,8 +2,8 @@
 title: '“用户赶都赶不走”：读完梁文锋内部发言之后'
 published: 2026-07-26
 description: 读完梁文锋投资者交流会文字稿后，我重新理解了 DeepSeek 对普通用户、商业化和 AGI 的态度。
-image: /assets/images/deepseek-agi-training-meme.png
-tags: [DeepSeek, AI, AGI, 梁文锋]
+image: /assets/images/deepseek-sticky-users-meme.png
+tags: [AI, DeepSeek, AGI]
 category: AI 与工具
 draft: false
 ---
@@ -102,4 +102,4 @@ DeepSeek 的特殊之处在于，它背后有幻方量化，没有其他 AI 创�
 
 ---
 
-> **创作说明：**这篇文章最初来自我的语音输入。我先口述了自己读完发言后的想法，并提供了相关文字稿和梗图，再由 AI 根据我表达的观点和材料进行结构整理与文字扩写，最后由我本人修改、确认。文中的经历、判断和主要观点均来自我本人。
+> 创作说明：这篇文章最初来自我的语音输入。我先口述了自己读完发言后的想法，并提供了相关文字稿和梗图，再由 AI 根据我表达的观点和材料进行结构整理与文字扩写，最后由我本人修改、确认。文中的经历、判断和主要观点均来自我本人。

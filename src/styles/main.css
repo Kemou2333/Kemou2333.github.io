@@ -277,7 +277,7 @@
         padding-left: 1.45rem;
         border: 1px solid var(--neu-border);
         background: linear-gradient(150deg, var(--surface-high), color-mix(in srgb, var(--surface-high) 45%, var(--card-bg)));
-        box-shadow: 5px 5px 10px color-mix(in srgb, var(--neu-shadow-strong) 70%, transparent), -4px -4px 9px var(--neu-highlight-strong), inset 1px 1px 1px var(--neu-highlight-strong);
+        box-shadow: 3px 4px 8px color-mix(in srgb, var(--neu-shadow-strong) 48%, transparent), -3px -3px 7px var(--neu-highlight), inset 1px 1px 1px var(--neu-highlight-strong);
         transition: color 180ms ease, transform 180ms cubic-bezier(.22, 1, .36, 1), box-shadow 180ms ease, outline-color 180ms ease;
     }
     .neu-tag::before {
@@ -298,8 +298,8 @@
         outline-offset: 2px;
     }
     .neu-tag:hover {
-        transform: translateY(-3px);
-        box-shadow: 8px 8px 16px var(--neu-shadow-strong), -6px -6px 13px var(--neu-highlight-strong), inset 1px 1px 1px var(--neu-highlight-strong);
+        transform: translateY(-2px);
+        box-shadow: 5px 6px 12px color-mix(in srgb, var(--neu-shadow-strong) 64%, transparent), -4px -4px 9px var(--neu-highlight-strong), inset 1px 1px 1px var(--neu-highlight-strong);
     }
     .neu-tag:active {
         transform: translateY(1px) !important;

@@ -18,7 +18,10 @@ const className = Astro.props.class;
     <div class="font-bold transition text-lg text-neutral-900 dark:text-neutral-100 relative ml-8 mt-4 mb-2
         before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
         before:absolute before:left-[-16px] before:top-[5.5px]">{name}</div>
-    <div id={id} class:list={["collapse-wrapper px-4 overflow-hidden", {"collapsed": isCollapsed}]}>
+    <div id={id} class:list={[
+        "collapse-wrapper px-4",
+        {"collapsed overflow-hidden": isCollapsed, "overflow-visible": !isCollapsed},
+    ]}>
         <slot></slot>
     </div>
     {isCollapsed && <div class="expand-btn px-4 -mb-2">
