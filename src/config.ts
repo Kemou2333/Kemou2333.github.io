@@ -12,7 +12,7 @@ export const siteConfig: SiteConfig = {
 	subtitle: "AI、游戏与生活记录",
 	lang: "zh_CN", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
 	themeColor: {
-		hue: 305, // Default blue-purple hue, from 0 to 360
+		hue: 250, // Default ocean-blue hue, from 0 to 360
 		fixed: false, // Hide the theme color picker for visitors
 	},
 	banner: {

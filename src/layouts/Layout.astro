@@ -129,7 +129,11 @@ const bannerOffset =
 			}
 
 			// Load the hue from local storage
-			const hue = localStorage.getItem('hue') || configHue;
+			const storedHue = localStorage.getItem('hue');
+			const hue = !storedHue || storedHue === '305' ? configHue : storedHue;
+			if (storedHue === '305') {
+				localStorage.setItem('hue', String(configHue));
+			}
 			document.documentElement.style.setProperty('--hue', hue);
 
 			// calculate the --banner-height-extend, which needs to be a multiple of 4 to avoid blurry text

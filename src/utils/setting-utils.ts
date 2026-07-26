@@ -15,6 +15,11 @@ export function getDefaultHue(): number {
 
 export function getHue(): number {
 	const stored = localStorage.getItem("hue");
+	if (stored === "305") {
+		const defaultHue = getDefaultHue();
+		localStorage.setItem("hue", String(defaultHue));
+		return defaultHue;
+	}
 	return stored ? Number.parseInt(stored, 10) : getDefaultHue();
 }
 
