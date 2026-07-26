@@ -1,9 +1,25 @@
+@font-face {
+    font-family: "Source Han Sans CN";
+    src: url("/assets/fonts/source-han-sans-cn-vf.woff2") format("woff2-variations");
+    font-style: normal;
+    font-weight: 250 900;
+    font-display: swap;
+}
+
 .custom-md {
+    font-family: "Source Han Sans CN", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+    font-size: clamp(1.0625rem, 0.25vw + 1rem, 1.16rem);
+    line-height: 1.95;
+    letter-spacing: 0.012em;
+
     h1 {
         @apply text-3xl;
     }
 
     h1, h2, h3, h4, h5, h6 {
+        font-family: inherit;
+        letter-spacing: 0;
+
         .anchor {
             @apply transition -m-0.5 ml-[0.2ch] p-0.5 select-none opacity-0 no-underline !important;
 
@@ -17,6 +33,16 @@
                 @apply opacity-100 !important;
             }
         }
+    }
+
+    p {
+        margin-top: 1.2em;
+        margin-bottom: 1.2em;
+    }
+
+    strong {
+        color: var(--tw-prose-bold);
+        font-weight: 720;
     }
 
     a:not(.no-styling) {

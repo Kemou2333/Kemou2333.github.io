@@ -440,6 +440,9 @@
             -4px -4px 9px var(--neu-highlight);
     }
     #post-cover {
+        width: 100%;
+        max-height: min(34rem, 68vh);
+        aspect-ratio: 16 / 10;
         padding: .68rem;
         border: .34rem solid var(--card-bg);
         outline: 1px solid var(--neu-border);
@@ -462,6 +465,8 @@
         pointer-events: none;
     }
     #post-cover img {
+        object-fit: contain;
+        object-position: center;
         border-radius: calc(var(--radius-large) - .58rem);
     }
     .post-nav-grid {
