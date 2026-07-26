@@ -13,10 +13,12 @@ pnpm dev
 
 ## 添加文章
 
-文章存放在 `src/content/posts/`。也可以运行：
+文章存放在 `src/content/posts/`，图片存放在 `public/assets/images/`。新增文章不需要重新开发首页、分类或归档页面。也可以运行：
 
 ```bash
 pnpm new-post article-name
 ```
 
-推送到 `main` 分支后，GitHub Pages 会自动构建并发布网站。
+文章和图片准备完成后，Windows 用户可双击根目录的 `一键发布博客.cmd`。推送到 `main` 分支后，GitHub Pages 会自动构建并发布网站。
+
+交给 AI 维护时，先完整阅读 `AGENTS.md`。
