@@ -620,6 +620,9 @@ body {
 
 @layer components {
     @media (max-width: 767px) {
+        #banner img {
+            object-position: 12% center !important;
+        }
         .post-nav-grid {
             grid-template-columns: minmax(0, 1fr);
         }
